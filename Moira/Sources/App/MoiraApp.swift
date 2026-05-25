@@ -14,7 +14,7 @@ struct MoiraApp: App {
 
         do {
             let schema = Schema([Restaurant.self])
-            let configuration = ModelConfiguration(isStoredInMemoryOnly: false)
+            let configuration = try Self.makeModelConfiguration()
             container = try ModelContainer(for: schema, configurations: [configuration])
             if PreviewSeeder.shouldSeedDemoData {
                 try PreviewSeeder.seedIfNeeded(in: container.mainContext)
@@ -30,5 +30,20 @@ struct MoiraApp: App {
                 .environment(appState)
         }
         .modelContainer(container)
+    }
+
+    private static func makeModelConfiguration() throws -> ModelConfiguration {
+        let appSupportURL = try applicationSupportDirectory()
+        let storeURL = appSupportURL.appending(path: "default.store")
+        return ModelConfiguration(url: storeURL, cloudKitDatabase: .none)
+    }
+
+    private static func applicationSupportDirectory() throws -> URL {
+        guard let url = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first else {
+            throw CocoaError(.fileNoSuchFile)
+        }
+
+        try FileManager.default.createDirectory(at: url, withIntermediateDirectories: true)
+        return url
     }
 }
