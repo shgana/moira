@@ -3,15 +3,11 @@ import SwiftData
 
 @main
 struct MoiraApp: App {
-    @State private var appState: AppState
+    @State private var appState = AppState()
     private let container: ModelContainer
-    private let searchService: AnyRestaurantSearchService
+    private let searchService: AnyRestaurantSearchService = SearchServiceFactory.make()
 
     init() {
-        let servicePackage = SearchServiceFactory.make()
-        _appState = State(initialValue: AppState(searchServiceStatus: servicePackage.status))
-        searchService = servicePackage.service
-
         do {
             let schema = Schema([Restaurant.self])
             let configuration = try Self.makeModelConfiguration()

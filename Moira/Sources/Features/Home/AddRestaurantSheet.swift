@@ -143,26 +143,34 @@ struct AddRestaurantSheet: View {
             return
         }
 
+        do {
+            try await Task.sleep(for: .milliseconds(300))
+        } catch {
+            return
+        }
+        guard !Task.isCancelled else { return }
+
         isSearching = true
         defer { isSearching = false }
         do {
             results = try await searchService.search(query: trimmed)
             errorMessage = nil
+            appState.noteProxySuccess()
         } catch {
             results = []
             if let searchError = error as? SearchServiceError {
                 switch searchError {
                 case .notConfigured:
-                    appState.searchServiceStatus = .notConfigured
-                    errorMessage = "Search is unavailable until the proxy base URL is configured."
+                    appState.noteProxyMissing()
+                    errorMessage = "Search is unavailable until the proxy URL is set in Profile."
                 case .invalidResponse:
-                    appState.searchServiceStatus = .proxyUnavailable
+                    appState.noteProxyFailure()
                     errorMessage = "Search failed."
                 case .candidateNotFound:
                     errorMessage = "That restaurant could not be loaded."
                 }
             } else {
-                appState.searchServiceStatus = .proxyUnavailable
+                appState.noteProxyFailure()
                 errorMessage = "Search failed."
             }
         }
@@ -180,13 +188,13 @@ struct AddRestaurantSheet: View {
         if let selectedPlaceID {
             do {
                 selectedCandidate = try await searchService.placeDetails(for: selectedPlaceID)
-                appState.searchServiceStatus = .live
+                appState.noteProxySuccess()
             } catch {
                 if let searchError = error as? SearchServiceError, searchError == .notConfigured {
-                    appState.searchServiceStatus = .notConfigured
-                    errorMessage = "Google and Yelp refresh is unavailable until the proxy base URL is configured. You can still save manual details."
+                    appState.noteProxyMissing()
+                    errorMessage = "Google and Yelp refresh is unavailable until the proxy URL is set in Profile. You can still save manual details."
                 } else {
-                    appState.searchServiceStatus = .proxyUnavailable
+                    appState.noteProxyFailure()
                     errorMessage = "Could not refresh Google/Yelp details. You can still save what is already loaded."
                 }
             }

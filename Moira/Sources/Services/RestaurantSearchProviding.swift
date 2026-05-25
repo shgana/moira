@@ -29,40 +29,46 @@ struct AnyRestaurantSearchService: RestaurantSearchProviding {
     }
 }
 
-struct SearchServicePackage {
-    let service: AnyRestaurantSearchService
-    let status: ServiceStatus
-}
+enum ProxyConfiguration {
+    static let userDefaultsKey = "moira.proxyBaseURL"
 
-enum SearchServiceFactory {
-    static func make() -> SearchServicePackage {
-        if let configuration = ProxyConfiguration.fromBundle() {
-            return SearchServicePackage(
-                service: AnyRestaurantSearchService(RemoteRestaurantSearchService(configuration: configuration)),
-                status: .live
-            )
+    static func currentBaseURL(defaults: UserDefaults = .standard, bundle: Bundle = .main) -> URL? {
+        if let override = defaults.string(forKey: userDefaultsKey),
+           let url = sanitizedURL(override) {
+            return url
         }
-
-        return SearchServicePackage(
-            service: AnyRestaurantSearchService(UnavailableRestaurantSearchService()),
-            status: .notConfigured
-        )
+        if let raw = bundle.object(forInfoDictionaryKey: "MOIRA_PROXY_BASE_URL") as? String,
+           let url = sanitizedURL(raw) {
+            return url
+        }
+        return nil
     }
-}
 
-struct ProxyConfiguration: Sendable {
-    let baseURL: URL
+    static func setBaseURL(_ raw: String?, defaults: UserDefaults = .standard) -> URL? {
+        guard let raw, let url = sanitizedURL(raw) else {
+            defaults.removeObject(forKey: userDefaultsKey)
+            return nil
+        }
+        defaults.set(url.absoluteString, forKey: userDefaultsKey)
+        return url
+    }
 
-    static func fromBundle(_ bundle: Bundle = .main) -> ProxyConfiguration? {
-        guard
-            let rawValue = bundle.object(forInfoDictionaryKey: "MOIRA_PROXY_BASE_URL") as? String,
-            let url = URL(string: rawValue.trimmingCharacters(in: .whitespacesAndNewlines)),
-            !rawValue.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    private static func sanitizedURL(_ raw: String) -> URL? {
+        let trimmed = raw.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty,
+              let url = URL(string: trimmed),
+              let scheme = url.scheme?.lowercased(),
+              scheme == "http" || scheme == "https"
         else {
             return nil
         }
+        return url
+    }
+}
 
-        return ProxyConfiguration(baseURL: url)
+enum SearchServiceFactory {
+    static func make() -> AnyRestaurantSearchService {
+        AnyRestaurantSearchService(RemoteRestaurantSearchService())
     }
 }
 
@@ -124,13 +130,20 @@ private struct ProxyPlace: Decodable {
 }
 
 struct RemoteRestaurantSearchService: RestaurantSearchProviding {
-    let configuration: ProxyConfiguration
     private let session: URLSession = .shared
+    private let urlProvider: () -> URL?
+
+    init(urlProvider: @escaping () -> URL? = { ProxyConfiguration.currentBaseURL() }) {
+        self.urlProvider = urlProvider
+    }
 
     func search(query: String) async throws -> [PlaceCandidate] {
-        guard !query.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return [] }
-        var components = URLComponents(url: configuration.baseURL.appending(path: "api/search"), resolvingAgainstBaseURL: false)
-        components?.queryItems = [URLQueryItem(name: "q", value: query)]
+        let trimmedQuery = query.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmedQuery.isEmpty else { return [] }
+        guard let baseURL = urlProvider() else { throw SearchServiceError.notConfigured }
+
+        var components = URLComponents(url: baseURL.appending(path: "api/search"), resolvingAgainstBaseURL: false)
+        components?.queryItems = [URLQueryItem(name: "q", value: trimmedQuery)]
         guard let url = components?.url else { throw SearchServiceError.invalidResponse }
 
         var request = URLRequest(url: url)
@@ -146,7 +159,8 @@ struct RemoteRestaurantSearchService: RestaurantSearchProviding {
     }
 
     func placeDetails(for placeID: String) async throws -> PlaceCandidate {
-        let url = configuration.baseURL.appending(path: "api/place").appending(path: placeID)
+        guard let baseURL = urlProvider() else { throw SearchServiceError.notConfigured }
+        let url = baseURL.appending(path: "api/place").appending(path: placeID)
         var request = URLRequest(url: url)
         request.timeoutInterval = 12
 
@@ -157,16 +171,5 @@ struct RemoteRestaurantSearchService: RestaurantSearchProviding {
 
         let decoded = try JSONDecoder().decode(ProxyPlace.self, from: data)
         return decoded.toCandidate()
-    }
-}
-
-struct UnavailableRestaurantSearchService: RestaurantSearchProviding {
-    func search(query: String) async throws -> [PlaceCandidate] {
-        guard !query.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return [] }
-        throw SearchServiceError.notConfigured
-    }
-
-    func placeDetails(for placeID: String) async throws -> PlaceCandidate {
-        throw SearchServiceError.notConfigured
     }
 }

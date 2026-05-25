@@ -15,23 +15,29 @@ Tiny Vercel proxy for Moira v1. It keeps Google Places and Yelp API keys off-dev
 
 ## Environment
 
-- `GOOGLE_PLACES_API_KEY`
-- `YELP_API_KEY`
+- `GOOGLE_PLACES_API_KEY` — Google Places API (New) key with the Places API enabled in your project.
+- `YELP_API_KEY` — Yelp Fusion API key.
 
-## Local
+## Local development
 
 ```bash
-cd /Users/shyam/Documents/Moira/proxy
+cd proxy
 npm install
 npm run check
-vercel dev
+vercel dev          # serves on http://localhost:3000
 ```
 
-Point the iOS app at the proxy by setting the generated Info.plist key `MOIRA_PROXY_BASE_URL` in [project.yml](/Users/shyam/Documents/Moira/project.yml), for example:
+## Pointing the iOS app at the proxy
 
-```yaml
-INFOPLIST_KEY_MOIRA_PROXY_BASE_URL: "http://127.0.0.1:3000"
-```
+The app reads the proxy URL from device storage at runtime — **no rebuild required**.
+
+1. Open Moira → **Profile** tab.
+2. Paste the proxy URL into **Proxy URL** and tap **Save**.
+3. Search should start working immediately.
+
+iOS App Transport Security blocks plain `http://` URLs by default, so use one of:
+- **Deployed HTTPS URL** (preferred) — `vercel deploy` produces a `*.vercel.app` URL. Set the env vars in the Vercel project settings.
+- **HTTPS tunnel for local dev** — `ngrok http 3000` will give you a public HTTPS URL that forwards to `vercel dev`.
 
 ## Product guardrails
 

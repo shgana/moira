@@ -197,22 +197,33 @@ struct SearchHomeView: View {
             return
         }
 
+        // Debounce — wait for the user to stop typing for 300ms before hitting the proxy.
+        do {
+            try await Task.sleep(for: .milliseconds(300))
+        } catch {
+            return
+        }
+        guard !Task.isCancelled else { return }
+
         isSearching = true
         defer { isSearching = false }
 
         do {
             results = try await searchService.search(query: trimmed)
             errorMessage = nil
+            appState.noteProxySuccess()
         } catch {
             if let searchError = error as? SearchServiceError {
                 switch searchError {
                 case .notConfigured:
-                    appState.searchServiceStatus = .notConfigured
+                    appState.noteProxyMissing()
                 case .invalidResponse:
-                    appState.searchServiceStatus = .proxyUnavailable
+                    appState.noteProxyFailure()
                 case .candidateNotFound:
                     break
                 }
+            } else {
+                appState.noteProxyFailure()
             }
             results = []
             errorMessage = searchErrorMessage(for: error)
