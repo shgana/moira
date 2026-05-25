@@ -1,0 +1,9 @@
+.DS_Store
+**/.DS_Store
+
+proxy/node_modules/
+proxy/.vercel/
+
+DerivedData/
+xcuserdata/
+*.xcuserstate

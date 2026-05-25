@@ -1,0 +1,562 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		06448B2EE7F8F0F79365F2B6 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABECBE5B74E731071F52A0EB /* ProfileView.swift */; };
+		2602CB540B46F0AA774701C8 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3314E5CB5F01342BF046EA /* AppState.swift */; };
+		278FFAFD53AC22CDA1AD8E2D /* RestaurantRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B771FD298440EE394FFEF6 /* RestaurantRowView.swift */; };
+		31B7C8BC994FE294854845AD /* SavedRestaurantsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2476CABF29C0CA5F4E4E3C8 /* SavedRestaurantsView.swift */; };
+		4DE8C3C6A84304F2B12AE206 /* AddRestaurantSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AC7FD9004737B4953EE9FD /* AddRestaurantSheet.swift */; };
+		4F1DA75C8A3B3CDCF8E85DD6 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7AC62EE549F5537DA877B5 /* Score.swift */; };
+		50EB1D32F53FBC330D167194 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD9EDD4E5420604591724F6 /* Restaurant.swift */; };
+		607B7AED584BF92F6F7D33E0 /* RestaurantSearchProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A42A47C91BF1A7A8F6E97FB /* RestaurantSearchProviding.swift */; };
+		9428213A1AB62A5025E61FC5 /* MoiraTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558992C6C74E22EE6404C1D5 /* MoiraTheme.swift */; };
+		9CB3C33AC1B586E35A05E856 /* ScoreEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21D5613293031643649EF3 /* ScoreEngineTests.swift */; };
+		A3C330A895B871233D0A288A /* PlaceCandidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760FD7DC85A68A7AC1D69FA3 /* PlaceCandidate.swift */; };
+		A720B1CF6137D0AF4D690B7F /* RestaurantDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7646944DAD002FB96E91E0 /* RestaurantDetailView.swift */; };
+		AA14D8F5F312D3DE3058D6AC /* SearchHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECA75A50874CECE3BAE4130 /* SearchHomeView.swift */; };
+		B96494A6B06F77A72CD9F4F9 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624836F105339D7F3E9596C3 /* RootView.swift */; };
+		BF5802B92F4A582E375AE0A1 /* PreviewSeeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7DD61806548D78D398EA72 /* PreviewSeeder.swift */; };
+		DFBBC8047DBDD97CDE7FAC72 /* ScoreRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E593AC52853554B98849498 /* ScoreRingView.swift */; };
+		F6F3E8FE84376BE55044B7C8 /* MoiraApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0688356912D909694AF1C4 /* MoiraApp.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2505AD1EBE6DF71EAE019723 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 67E66550637874E579E351F3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ADE14B0937E01F81DEB1A847;
+			remoteInfo = Moira;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		08AC7FD9004737B4953EE9FD /* AddRestaurantSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRestaurantSheet.swift; sourceTree = "<group>"; };
+		0EE5D0505B1836C52904D386 /* MoiraTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = MoiraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A42A47C91BF1A7A8F6E97FB /* RestaurantSearchProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantSearchProviding.swift; sourceTree = "<group>"; };
+		1E593AC52853554B98849498 /* ScoreRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreRingView.swift; sourceTree = "<group>"; };
+		3E7DD61806548D78D398EA72 /* PreviewSeeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewSeeder.swift; sourceTree = "<group>"; };
+		4E0688356912D909694AF1C4 /* MoiraApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoiraApp.swift; sourceTree = "<group>"; };
+		4E7AC62EE549F5537DA877B5 /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
+		558992C6C74E22EE6404C1D5 /* MoiraTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoiraTheme.swift; sourceTree = "<group>"; };
+		624836F105339D7F3E9596C3 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		760FD7DC85A68A7AC1D69FA3 /* PlaceCandidate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCandidate.swift; sourceTree = "<group>"; };
+		78B771FD298440EE394FFEF6 /* RestaurantRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantRowView.swift; sourceTree = "<group>"; };
+		A90DBC8FF22DE22CC354AE5C /* Moira.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Moira.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ABECBE5B74E731071F52A0EB /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		B2476CABF29C0CA5F4E4E3C8 /* SavedRestaurantsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedRestaurantsView.swift; sourceTree = "<group>"; };
+		BA3314E5CB5F01342BF046EA /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		BC21D5613293031643649EF3 /* ScoreEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreEngineTests.swift; sourceTree = "<group>"; };
+		DECA75A50874CECE3BAE4130 /* SearchHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHomeView.swift; sourceTree = "<group>"; };
+		EAD9EDD4E5420604591724F6 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		EE7646944DAD002FB96E91E0 /* RestaurantDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		149E9E04AF01C0C269795CB0 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				37C610F40855B9CBA3F39DE6 /* App */,
+				FB683988B3B0A83C073E14FB /* DesignSystem */,
+				26681650CEFA1820BBCDAD42 /* Features */,
+				DCDE7B8A32E615128A306444 /* Models */,
+				A950A3D8A98B4471E9A964F0 /* Scoring */,
+				FBFCCF091A2E5633BC247AF9 /* Services */,
+			);
+			name = Sources;
+			path = Moira/Sources;
+			sourceTree = "<group>";
+		};
+		178C4B16E3A42C8858A2AF3E /* RestaurantDetail */ = {
+			isa = PBXGroup;
+			children = (
+				EE7646944DAD002FB96E91E0 /* RestaurantDetailView.swift */,
+			);
+			path = RestaurantDetail;
+			sourceTree = "<group>";
+		};
+		26681650CEFA1820BBCDAD42 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				4A97AB34A09B4D7CA34CE446 /* Home */,
+				FE935FCFC5BF8271BDCB0BF5 /* Profile */,
+				178C4B16E3A42C8858A2AF3E /* RestaurantDetail */,
+				35372655C54C9FD011B4AAF8 /* Saved */,
+				33FCCD5FEB994702AAC07B19 /* Shared */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		33FCCD5FEB994702AAC07B19 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				78B771FD298440EE394FFEF6 /* RestaurantRowView.swift */,
+				1E593AC52853554B98849498 /* ScoreRingView.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		35372655C54C9FD011B4AAF8 /* Saved */ = {
+			isa = PBXGroup;
+			children = (
+				B2476CABF29C0CA5F4E4E3C8 /* SavedRestaurantsView.swift */,
+			);
+			path = Saved;
+			sourceTree = "<group>";
+		};
+		37C610F40855B9CBA3F39DE6 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				BA3314E5CB5F01342BF046EA /* AppState.swift */,
+				4E0688356912D909694AF1C4 /* MoiraApp.swift */,
+				3E7DD61806548D78D398EA72 /* PreviewSeeder.swift */,
+				624836F105339D7F3E9596C3 /* RootView.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		4A97AB34A09B4D7CA34CE446 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				08AC7FD9004737B4953EE9FD /* AddRestaurantSheet.swift */,
+				DECA75A50874CECE3BAE4130 /* SearchHomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		75A6D0888AD24F3EB1DF0F4B = {
+			isa = PBXGroup;
+			children = (
+				149E9E04AF01C0C269795CB0 /* Sources */,
+				C168C06BE6D2F917EF162314 /* Tests */,
+				C32D0B3A85A3E4D66919A210 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A950A3D8A98B4471E9A964F0 /* Scoring */ = {
+			isa = PBXGroup;
+			children = (
+				4E7AC62EE549F5537DA877B5 /* Score.swift */,
+			);
+			path = Scoring;
+			sourceTree = "<group>";
+		};
+		C168C06BE6D2F917EF162314 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				F86A3A445494BF4C56DAC734 /* ScoringTests */,
+			);
+			name = Tests;
+			path = Moira/Tests;
+			sourceTree = "<group>";
+		};
+		C32D0B3A85A3E4D66919A210 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A90DBC8FF22DE22CC354AE5C /* Moira.app */,
+				0EE5D0505B1836C52904D386 /* MoiraTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DCDE7B8A32E615128A306444 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				760FD7DC85A68A7AC1D69FA3 /* PlaceCandidate.swift */,
+				EAD9EDD4E5420604591724F6 /* Restaurant.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F86A3A445494BF4C56DAC734 /* ScoringTests */ = {
+			isa = PBXGroup;
+			children = (
+				BC21D5613293031643649EF3 /* ScoreEngineTests.swift */,
+			);
+			path = ScoringTests;
+			sourceTree = "<group>";
+		};
+		FB683988B3B0A83C073E14FB /* DesignSystem */ = {
+			isa = PBXGroup;
+			children = (
+				558992C6C74E22EE6404C1D5 /* MoiraTheme.swift */,
+			);
+			path = DesignSystem;
+			sourceTree = "<group>";
+		};
+		FBFCCF091A2E5633BC247AF9 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				1A42A47C91BF1A7A8F6E97FB /* RestaurantSearchProviding.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		FE935FCFC5BF8271BDCB0BF5 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				ABECBE5B74E731071F52A0EB /* ProfileView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		432B3316222065D751DC0220 /* MoiraTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DF28C50283E1D361B15BFBCE /* Build configuration list for PBXNativeTarget "MoiraTests" */;
+			buildPhases = (
+				B48526E60C187EAF15C640F7 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E3ADC74518BB7CB06089DFC1 /* PBXTargetDependency */,
+			);
+			name = MoiraTests;
+			packageProductDependencies = (
+			);
+			productName = MoiraTests;
+			productReference = 0EE5D0505B1836C52904D386 /* MoiraTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		ADE14B0937E01F81DEB1A847 /* Moira */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5DB4BEE568627732EC217556 /* Build configuration list for PBXNativeTarget "Moira" */;
+			buildPhases = (
+				FBA7799A9812A9C8ED7F4CE8 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Moira;
+			packageProductDependencies = (
+			);
+			productName = Moira;
+			productReference = A90DBC8FF22DE22CC354AE5C /* Moira.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		67E66550637874E579E351F3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					ADE14B0937E01F81DEB1A847 = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = F89D590169062F6101B9639F /* Build configuration list for PBXProject "Moira" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 75A6D0888AD24F3EB1DF0F4B;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				ADE14B0937E01F81DEB1A847 /* Moira */,
+				432B3316222065D751DC0220 /* MoiraTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B48526E60C187EAF15C640F7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9CB3C33AC1B586E35A05E856 /* ScoreEngineTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FBA7799A9812A9C8ED7F4CE8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DE8C3C6A84304F2B12AE206 /* AddRestaurantSheet.swift in Sources */,
+				2602CB540B46F0AA774701C8 /* AppState.swift in Sources */,
+				F6F3E8FE84376BE55044B7C8 /* MoiraApp.swift in Sources */,
+				9428213A1AB62A5025E61FC5 /* MoiraTheme.swift in Sources */,
+				A3C330A895B871233D0A288A /* PlaceCandidate.swift in Sources */,
+				BF5802B92F4A582E375AE0A1 /* PreviewSeeder.swift in Sources */,
+				06448B2EE7F8F0F79365F2B6 /* ProfileView.swift in Sources */,
+				50EB1D32F53FBC330D167194 /* Restaurant.swift in Sources */,
+				A720B1CF6137D0AF4D690B7F /* RestaurantDetailView.swift in Sources */,
+				278FFAFD53AC22CDA1AD8E2D /* RestaurantRowView.swift in Sources */,
+				607B7AED584BF92F6F7D33E0 /* RestaurantSearchProviding.swift in Sources */,
+				B96494A6B06F77A72CD9F4F9 /* RootView.swift in Sources */,
+				31B7C8BC994FE294854845AD /* SavedRestaurantsView.swift in Sources */,
+				4F1DA75C8A3B3CDCF8E85DD6 /* Score.swift in Sources */,
+				DFBBC8047DBDD97CDE7FAC72 /* ScoreRingView.swift in Sources */,
+				AA14D8F5F312D3DE3058D6AC /* SearchHomeView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E3ADC74518BB7CB06089DFC1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ADE14B0937E01F81DEB1A847 /* Moira */;
+			targetProxy = 2505AD1EBE6DF71EAE019723 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		06849EF20C3084FDDD5FA2DA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Moira;
+				INFOPLIST_KEY_MOIRA_PROXY_BASE_URL = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Moira uses your location only when you choose nearby restaurant search or directions.";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.shgana.moira;
+				PRODUCT_NAME = Moira;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		0C3F972B6EE0487484074B28 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 0.1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		7DDF3420D1BDBAABFC31E7FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.shgana.moira.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Moira.app/Moira";
+			};
+			name = Release;
+		};
+		EC76F15CC42F55000D00D2F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Moira;
+				INFOPLIST_KEY_MOIRA_PROXY_BASE_URL = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Moira uses your location only when you choose nearby restaurant search or directions.";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.shgana.moira;
+				PRODUCT_NAME = Moira;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		EE3CBDAB338D59B4C743D373 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.shgana.moira.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Moira.app/Moira";
+			};
+			name = Debug;
+		};
+		EF4871A52C418EF7DA33D28B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 0.1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5DB4BEE568627732EC217556 /* Build configuration list for PBXNativeTarget "Moira" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC76F15CC42F55000D00D2F8 /* Debug */,
+				06849EF20C3084FDDD5FA2DA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		DF28C50283E1D361B15BFBCE /* Build configuration list for PBXNativeTarget "MoiraTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE3CBDAB338D59B4C743D373 /* Debug */,
+				7DDF3420D1BDBAABFC31E7FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		F89D590169062F6101B9639F /* Build configuration list for PBXProject "Moira" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0C3F972B6EE0487484074B28 /* Debug */,
+				EF4871A52C418EF7DA33D28B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 67E66550637874E579E351F3 /* Project object */;
+}

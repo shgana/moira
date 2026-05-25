@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&amp;family=Hanken+Grotesk:wght@600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#281900",
+                        "on-secondary-container": "#00731e",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#281900",
+                        "outline-variant": "#c4c7c7",
+                        "surface": "#f9f9f9",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#604100",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "surface-dim": "#dadada",
+                        "surface-container-high": "#e8e8e8",
+                        "secondary": "#006e1c",
+                        "tertiary-fixed-dim": "#ffba38",
+                        "surface-variant": "#e2e2e2",
+                        "on-background": "#1a1c1c",
+                        "surface-container": "#eeeeee",
+                        "primary-container": "#1c1b1b",
+                        "surface-container-lowest": "#ffffff",
+                        "outline": "#747878",
+                        "primary": "#000000",
+                        "secondary-fixed-dim": "#78dc77",
+                        "surface-bright": "#f9f9f9",
+                        "tertiary": "#000000",
+                        "on-tertiary-container": "#af7a00",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "on-secondary-fixed": "#002204",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#1c1b1b",
+                        "tertiary-fixed": "#ffdeac",
+                        "background": "#f9f9f9",
+                        "on-primary-container": "#858383",
+                        "surface-container-low": "#f3f3f3",
+                        "inverse-surface": "#2f3131",
+                        "inverse-on-surface": "#f0f1f1",
+                        "secondary-fixed": "#94f990",
+                        "on-surface-variant": "#444748",
+                        "primary-fixed": "#e5e2e1",
+                        "on-surface": "#1a1c1c",
+                        "secondary-container": "#91f78e",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#005313",
+                        "surface-tint": "#5f5e5e",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#474746",
+                        "inverse-primary": "#c8c6c5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "4px",
+                        "section-gap": "48px",
+                        "base": "8px",
+                        "gutter": "16px",
+                        "stack-lg": "24px",
+                        "container-margin": "24px",
+                        "stack-md": "12px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "label-caps": ["JetBrains Mono"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "display-score": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "data-mono": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "display-score": ["48px", {"lineHeight": "48px", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "data-mono": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .premium-shadow {
+            box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.04);
+        }
+        .score-ring {
+            background: conic-gradient(from 0deg, #1A1A1A 0%, #1A1A1A 86%, #EEEEEE 86%, #EEEEEE 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Top AppBar (Mobile context, Shell Suppression logic: Back action implies sub-page) -->
+<header class="sticky top-0 z-50 flex justify-between items-center w-full px-container-margin py-stack-md bg-surface/80 backdrop-blur-md border-b border-outline-variant">
+<button aria-label="Go back" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="text-headline-md font-headline-md font-bold tracking-tight text-primary">Moira</h1>
+<button aria-label="Save restaurant" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+</button>
+</header>
+<main class="max-w-[1120px] mx-auto pb-32">
+<!-- Hero Image Section -->
+<section class="relative w-full h-[320px] md:h-[480px] overflow-hidden md:rounded-b-xl">
+<img alt="Restaurant Interior" class="w-full h-full object-cover" data-alt="A sophisticated, high-end restaurant interior with dark wooden tables and sleek black leather chairs. The lighting is moody and warm, highlighting a minimalist architectural design with industrial accents. Large windows reveal a blurry city skyline at twilight. The overall aesthetic is premium, analytical, and modern, dominated by a charcoal and deep walnut color palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoICCeifGP1KvZW1A7-J1AZQRn6bP1yp428lAclfsSfDaZAtqOBwdj8Rhvkdba0gITRoWO2AoNT-QhqJDWmJvE6AtftX_uCc3MSsAYCcTmMYv5iwTPe41ySr7T0Vt35y7157IIFAVfrVG1VbXNr3y3Y93BY6St3od_qxgoZmMhdjt9fgJ54DxGS3-YRcKGPSOE315g-I8pYFFYEV1t_5VWzTJeoJ2Gmq1lXfgZCzy4zrgDZGc4z5u557G1QuvWTFx0KRbsEI5FuTIM"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-6 left-6 text-white">
+<span class="font-label-caps text-label-caps bg-primary/20 backdrop-blur-sm px-2 py-1 rounded mb-2 inline-block">Fine Dining • Midtown</span>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg">The Obsidian Table</h2>
+</div>
+</section>
+<!-- Real Score Hero Card -->
+<section class="px-container-margin -mt-12 relative z-10">
+<div class="bg-surface-container-lowest border border-outline-variant p-8 rounded-xl premium-shadow flex flex-col items-center text-center">
+<div class="relative w-32 h-32 flex items-center justify-center mb-stack-md">
+<div class="absolute inset-0 rounded-full border-4 border-surface-container"></div>
+<div class="absolute inset-0 rounded-full border-4 border-primary border-t-transparent -rotate-45"></div>
+<div class="flex flex-col items-center">
+<span class="font-display-score text-display-score text-primary">8.6</span>
+</div>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-stack-sm">Real Score</h3>
+<p class="font-body-md text-on-surface-variant mb-stack-sm">Based on 1,248 verified reviews</p>
+<div class="flex items-center gap-2 px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-label-caps text-label-caps">High confidence</span>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter px-container-margin mt-stack-lg">
+<!-- Ratings Breakdown Card -->
+<div class="bg-surface-container-lowest border border-outline-variant p-6 rounded-xl premium-shadow">
+<h4 class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-6">Ratings Breakdown</h4>
+<div class="space-y-6">
+<!-- Google -->
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<span class="font-body-md font-medium">Google</span>
+<span class="font-data-mono text-data-mono">4.2 / 5.0</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 84%"></div>
+</div>
+</div>
+<!-- Yelp -->
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<span class="font-body-md font-medium">Yelp</span>
+<span class="font-data-mono text-data-mono">3.8 / 5.0</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 76%"></div>
+</div>
+</div>
+<!-- Beli -->
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<span class="font-body-md font-medium">Beli</span>
+<span class="font-data-mono text-data-mono">8.9 / 10.0</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 89%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- AI Summary Card -->
+<div class="bg-surface-container-lowest border border-outline-variant p-6 rounded-xl premium-shadow">
+<h4 class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-6">What people are saying</h4>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-3">
+<span class="font-label-caps text-label-caps text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">thumb_up</span> LOVED
+                        </span>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 bg-secondary/10 border border-secondary/20 rounded font-label-caps text-[10px] text-secondary">Aged Wagyu</span>
+<span class="px-2 py-1 bg-secondary/10 border border-secondary/20 rounded font-label-caps text-[10px] text-secondary">Acoustics</span>
+<span class="px-2 py-1 bg-secondary/10 border border-secondary/20 rounded font-label-caps text-[10px] text-secondary">Staff</span>
+</div>
+</div>
+<div class="space-y-3">
+<span class="font-label-caps text-label-caps text-error flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">thumb_down</span> CRITICIZED
+                        </span>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 bg-error/10 border border-error/20 rounded font-label-caps text-[10px] text-error">Wait times</span>
+<span class="px-2 py-1 bg-error/10 border border-error/20 rounded font-label-caps text-[10px] text-error">Valet price</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Score Explanation Section -->
+<section class="px-container-margin mt-section-gap">
+<div class="border-t border-outline-variant pt-8">
+<h4 class="font-headline-md text-headline-md text-primary mb-stack-md">How we calculate this</h4>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="space-y-2">
+<span class="material-symbols-outlined text-primary">weight</span>
+<h5 class="font-body-lg font-bold">Source Weighting</h5>
+<p class="text-on-surface-variant text-body-md">We prioritize expert critics and high-volume platforms to filter out statistical outliers.</p>
+</div>
+<div class="space-y-2">
+<span class="material-symbols-outlined text-primary">history</span>
+<h5 class="font-body-lg font-bold">Recency Bias</h5>
+<p class="text-on-surface-variant text-body-md">Reviews from the last 90 days carry 2x the weight of older entries to reflect current quality.</p>
+</div>
+<div class="space-y-2">
+<span class="material-symbols-outlined text-primary">science</span>
+<h5 class="font-body-lg font-bold">Bot Detection</h5>
+<p class="text-on-surface-variant text-body-md">Our algorithm strips away AI-generated or incentivized feedback automatically.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom CTAs (Floating Dock) -->
+<footer class="fixed bottom-0 left-0 w-full z-50 bg-surface/90 backdrop-blur-lg border-t border-outline-variant px-container-margin py-4 md:py-6">
+<div class="max-w-[1120px] mx-auto flex items-center gap-4">
+<button class="flex-1 bg-primary text-on-primary h-12 rounded-xl flex items-center justify-center gap-2 font-body-lg font-bold transition-transform active:scale-95">
+<span class="material-symbols-outlined">directions</span>
+                Get Directions
+            </button>
+<button class="w-12 h-12 border-2 border-primary text-primary rounded-xl flex items-center justify-center transition-colors hover:bg-primary hover:text-on-primary active:scale-95">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+</button>
+<button class="w-12 h-12 bg-surface-container border border-outline-variant text-on-surface rounded-xl flex items-center justify-center transition-colors hover:bg-surface-container-high active:scale-95">
+<span class="material-symbols-outlined">share</span>
+</button>
+</div>
+</footer>
+<script>
+        // Micro-interaction for back button
+        document.querySelector('button[aria-label="Go back"]').addEventListener('click', () => {
+            window.history.back();
+        });
+
+        // Simple scale effect for interactive cards
+        const cards = document.querySelectorAll('.premium-shadow');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.borderColor = '#1A1A1A';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.borderColor = '#EEEEEE';
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#281900",
+                        "on-secondary-container": "#00731e",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#281900",
+                        "outline-variant": "#c4c7c7",
+                        "surface": "#f9f9f9",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#604100",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "surface-dim": "#dadada",
+                        "surface-container-high": "#e8e8e8",
+                        "secondary": "#006e1c",
+                        "tertiary-fixed-dim": "#ffba38",
+                        "surface-variant": "#e2e2e2",
+                        "on-background": "#1a1c1c",
+                        "surface-container": "#eeeeee",
+                        "primary-container": "#1c1b1b",
+                        "surface-container-lowest": "#ffffff",
+                        "outline": "#747878",
+                        "primary": "#000000",
+                        "secondary-fixed-dim": "#78dc77",
+                        "surface-bright": "#f9f9f9",
+                        "tertiary": "#000000",
+                        "on-tertiary-container": "#af7a00",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "on-secondary-fixed": "#002204",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#1c1b1b",
+                        "tertiary-fixed": "#ffdeac",
+                        "background": "#f9f9f9",
+                        "on-primary-container": "#858383",
+                        "surface-container-low": "#f3f3f3",
+                        "inverse-surface": "#2f3131",
+                        "inverse-on-surface": "#f0f1f1",
+                        "secondary-fixed": "#94f990",
+                        "on-surface-variant": "#444748",
+                        "primary-fixed": "#e5e2e1",
+                        "on-surface": "#1a1c1c",
+                        "secondary-container": "#91f78e",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#005313",
+                        "surface-tint": "#5f5e5e",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#474746",
+                        "inverse-primary": "#c8c6c5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "4px",
+                        "section-gap": "48px",
+                        "base": "8px",
+                        "gutter": "16px",
+                        "stack-lg": "24px",
+                        "container-margin": "24px",
+                        "stack-md": "12px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "label-caps": ["JetBrains Mono"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "display-score": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "data-mono": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "display-score": ["48px", {"lineHeight": "48px", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "data-mono": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary selection:text-on-primary">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 flex justify-between items-center w-full px-container-margin py-stack-md bg-surface/80 backdrop-blur-md border-b border-outline-variant dark:border-outline">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="analytics">analytics</span>
+<span class="text-headline-md font-headline-md font-bold tracking-tight text-primary">Moira</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-primary font-bold transition-opacity hover:opacity-80" href="#">Home</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Explore</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Saved</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" data-icon="search">search</button>
+<div class="w-8 h-8 rounded-full bg-surface-container overflow-hidden border border-outline-variant">
+<img alt="User profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4STp13rOK4-oqW8ymrVR14dm79kP0oJwCc1z3b-t--r117Q_crYI6hMYR3yz8XT-xT7tPKZmWrvXV7NtmHPZW07Y6qzVJvA8BMl9CT2HoAKJY8aS62D9nrL-9irbHy3nL9JtkpvnuLBadumAadiHSzmyFvYENd7Ew3JuHyUEdnTOO6zwWE1gN6JqVW2ZduFy4AVJM7wNYLdllwiXWhIU5d2tKPSjijQA2ji5gfVRNsFw9e_ncs2U4vLoQM3VsOndE1HbL9io7-o9s"/>
+</div>
+</div>
+</header>
+<main class="max-w-[1120px] mx-auto px-container-margin pt-12 pb-32">
+<!-- Hero Section -->
+<section class="mb-section-gap">
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-stack-lg max-w-2xl">
+                Find restaurants you can actually trust
+            </h1>
+<!-- Search Bar -->
+<div class="relative group max-w-2xl">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant" data-icon="search">search</span>
+<input class="w-full bg-transparent border-b-2 border-outline-variant py-4 pl-12 pr-4 font-body-lg text-body-lg placeholder:text-on-surface-variant/50 focus:outline-none focus:border-primary transition-all duration-300" placeholder="Search restaurants, cuisines, neighborhoods..." type="text"/>
+<div class="absolute right-2 top-1/2 -translate-y-1/2">
+<button class="bg-primary text-on-primary px-6 py-2 rounded-xl text-label-caps font-label-caps hover:bg-on-primary-fixed-variant transition-colors">
+                        GO
+                    </button>
+</div>
+</div>
+</section>
+<!-- Categories Grid -->
+<section class="mb-section-gap">
+<div class="flex flex-wrap gap-3">
+<button class="px-6 py-2 rounded-full border border-primary text-label-caps font-label-caps bg-primary text-on-primary hover:bg-on-primary-fixed-variant transition-all">Date Night</button>
+<button class="px-6 py-2 rounded-full border border-outline text-label-caps font-label-caps hover:border-primary transition-all">Casual</button>
+<button class="px-6 py-2 rounded-full border border-outline text-label-caps font-label-caps hover:border-primary transition-all">Best Pasta</button>
+<button class="px-6 py-2 rounded-full border border-outline text-label-caps font-label-caps hover:border-primary transition-all">Brunch</button>
+<button class="px-6 py-2 rounded-full border border-outline text-label-caps font-label-caps hover:border-primary transition-all">Hidden Gems</button>
+<button class="px-6 py-2 rounded-full border border-outline text-label-caps font-label-caps hover:border-primary transition-all">Worth the Wait</button>
+</div>
+</section>
+<!-- Trending Horizontal Carousel -->
+<section class="mb-section-gap">
+<div class="flex justify-between items-end mb-stack-lg">
+<h2 class="font-headline-md text-headline-md">Trending Real Scores</h2>
+<a class="text-label-caps font-label-caps text-primary border-b border-primary hover:opacity-70 transition-opacity" href="#">VIEW ALL</a>
+</div>
+<div class="flex gap-gutter overflow-x-auto hide-scrollbar pb-4 snap-x snap-mandatory">
+<!-- Trending Card 1 -->
+<div class="min-w-[320px] md:min-w-[400px] snap-start bg-surface-container-lowest border border-surface-container shadow-[0_4px_20px_0_rgba(0,0,0,0.04)] rounded-xl overflow-hidden group hover:border-primary transition-colors cursor-pointer">
+<div class="h-48 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A sophisticated, high-end restaurant interior featuring warm, low-key mood lighting and minimalist furniture. The color palette consists of deep charcoals, walnut woods, and subtle gold accents. Soft overhead pendant lights create a focused glow on white table settings, maintaining a refined and analytical atmosphere suitable for a premium dining experience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXxDavXQWmZHX2Mm7jwoLRAm0O8qpiCO6LaPCnsb36qn4ddG6zfaGls6Kgw6Io68kPLAoaAY4c5QYeWfHVIHxut90P8aIIL30__9GEnEw2Ih0BGvD88vDEJ3j1y7BVhl56rg1MCULitkPyBUkxBP36sTkMMxy_taRSdjofViZXurQhtWI2pexncaIkIju1OQozgT7QFlO8g7cnTgqxJ0aZop-XBaUIocCTAqaHz9UFdrxUVEX8c45Ld0A3Y233OQbnzs7I1ll5WOhN"/>
+<div class="absolute top-4 right-4 bg-surface px-3 py-1 rounded-lg flex items-center gap-1 border border-outline-variant">
+<span class="text-display-score font-display-score text-[24px] leading-tight text-primary">8.8</span>
+</div>
+</div>
+<div class="p-stack-lg">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary">Lumina Bistro</h3>
+<p class="text-label-caps font-label-caps text-on-surface-variant">FRENCH • TRIBECA</p>
+</div>
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-[16px]" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-label-caps font-label-caps">HIGH CONFIDENCE</span>
+</div>
+</div>
+<div class="mt-4 pt-4 border-t border-outline-variant flex gap-6">
+<div class="text-center">
+<p class="text-label-caps font-label-caps text-on-surface-variant text-[10px]">NOISE</p>
+<p class="font-data-mono text-data-mono font-bold">LOW</p>
+</div>
+<div class="text-center">
+<p class="text-label-caps font-label-caps text-on-surface-variant text-[10px]">SERVICE</p>
+<p class="font-data-mono text-data-mono font-bold">9.2</p>
+</div>
+<div class="text-center">
+<p class="text-label-caps font-label-caps text-on-surface-variant text-[10px]">PRICE</p>
+<p class="font-data-mono text-data-mono font-bold">$$$</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Trending Card 2 -->
+<div class="min-w-[320px] md:min-w-[400px] snap-start bg-surface-container-lowest border border-surface-container shadow-[0_4px_20px_0_rgba(0,0,0,0.04)] rounded-xl overflow-hidden group hover:border-primary transition-colors cursor-pointer">
+<div class="h-48 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A modern industrial dining space with high ceilings and large windows, captured in bright natural daylight. The design aesthetic is clean and minimalist with stark white walls, black steel frames, and light oak floors. The scene is crisp and high-contrast, emphasizing clarity and a premium urban feel that aligns with a data-driven lifestyle brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPMBVeHFpVdKozVyLq0vBswER70jdDf7Se-dIglUSImh5MuUud4rorypLYT4sg_mhFKJeCGrYDV9Q2WsVlNeyFlExbFg5vKbJa2tx5k2JplK6y6_L_3RVLIfJcPiL_vgGFrrpYUlAwX55FKkO5N0yPJbAcv7D3UPBkYKJNAhSUXI4q2YR1Vj2guoiGRNIGXBnB5w5kS0r1Rpx0d7YC9Li7BoME-nkQcHj3GMkuGlYagM_UGBfMVy816ZNrS-9l3xxHJHMtjslA1IQO"/>
+<div class="absolute top-4 right-4 bg-surface px-3 py-1 rounded-lg flex items-center gap-1 border border-outline-variant">
+<span class="text-display-score font-display-score text-[24px] leading-tight text-primary">9.1</span>
+</div>
+</div>
+<div class="p-stack-lg">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary">Carbonne</h3>
+<p class="text-label-caps font-label-caps text-on-surface-variant">ITALIAN • SOHO</p>
+</div>
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-[16px]" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-label-caps font-label-caps">HIGH CONFIDENCE</span>
+</div>
+</div>
+<div class="mt-4 pt-4 border-t border-outline-variant flex gap-6">
+<div class="text-center">
+<p class="text-label-caps font-label-caps text-on-surface-variant text-[10px]">NOISE</p>
+<p class="font-data-mono text-data-mono font-bold">MED</p>
+</div>
+<div class="text-center">
+<p class="text-label-caps font-label-caps text-on-surface-variant text-[10px]">SERVICE</p>
+<p class="font-data-mono text-data-mono font-bold">8.5</p>
+</div>
+<div class="text-center">
+<p class="text-label-caps font-label-caps text-on-surface-variant text-[10px]">PRICE</p>
+<p class="font-data-mono text-data-mono font-bold">$$$$</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Recently Viewed -->
+<section>
+<div class="flex justify-between items-end mb-stack-lg">
+<h2 class="font-headline-md text-headline-md">Recently Viewed</h2>
+<button class="text-label-caps font-label-caps text-on-surface-variant hover:text-primary transition-colors">CLEAR ALL</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Recent Item 1 -->
+<div class="flex items-center gap-4 p-4 bg-surface-container-lowest border border-surface-container hover:border-outline-variant transition-all rounded-lg group cursor-pointer">
+<div class="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300" data-alt="A close-up photograph of a beautifully plated, high-end culinary dish on a textured matte black ceramic plate. The lighting is bright and directional, casting subtle shadows that highlight the intricate textures of the food. The aesthetic is clean and analytical, emphasizing precision and quality within a minimalist white-space environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCe34yf7KFhDXuPErtND740FLZG9XrD9ay24EBDEgNZznv9uzy16br-Y6swtbrVGBOzSjuauIG1u_DaCFGFrsje1BLauuxkp20szxzqGNIp5yk8g_QUH5aD5uwU2i6HdyGO28UNkUDHQ-K78AU7XQ5-FNRFDDw_3wWR0rudkitKXxJmEAr3NtCFUCxLL1N6x9BrLOsdJ900p0GoGxi9o7mmXYYp3tR2ut4gB_m3cWito76WItQCQ_-G3nS9bd6CQDIJSq3bfp5oyaXX"/>
+</div>
+<div class="flex-grow">
+<h4 class="font-body-lg font-bold text-primary">Ichiran Ramen</h4>
+<p class="text-label-caps font-label-caps text-on-surface-variant text-[10px]">JAPANESE • MIDTOWN</p>
+<div class="flex items-center gap-1 mt-1">
+<span class="text-data-mono font-data-mono font-bold text-primary">8.2</span>
+<span class="text-[10px] text-on-surface-variant">REAL SCORE</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- Recent Item 2 -->
+<div class="flex items-center gap-4 p-4 bg-surface-container-lowest border border-surface-container hover:border-outline-variant transition-all rounded-lg group cursor-pointer">
+<div class="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300" data-alt="A minimalist architectural detail of a modern coffee shop bar, featuring clean white marble surfaces, stainless steel equipment, and subtle charcoal gray accents. The lighting is cold and even, creating a professional and refined look that conveys confidence and clarity. The atmosphere is stark, modern, and focused on essential design elements." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzTnNaHZWu2OG0owwn6mw6dWQg4CAOPI8E6BP4TbyfaEhLORTr9tIzHdzzWMx6NS_qhClAP6ZZOQm9TFQNCV-lSVJllww6Y7u2DBeZXhEu3MMnSBLXmOFQ18aCtN4bmFUIJ-nrC7MJDNF4dF1k35L-2w4ad9ocecIPMaFQaIrUdunokxaaj53VTR1mkofcmjjygh-XqSBZDEOfOPD7z1t4Lfk4UUCA5LDBtcbQhI3GNhF2H8of1dOuvp1KTYbbmHdXL-xGaZ9l0OYb"/>
+</div>
+<div class="flex-grow">
+<h4 class="font-body-lg font-bold text-primary">The Modern</h4>
+<p class="text-label-caps font-label-caps text-on-surface-variant text-[10px]">AMERICAN • MOMA</p>
+<div class="flex items-center gap-1 mt-1">
+<span class="text-data-mono font-data-mono font-bold text-primary">9.4</span>
+<span class="text-[10px] text-on-surface-variant">REAL SCORE</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-gutter pb-6 pt-2 bg-surface shadow-[0_-4px_20px_0_rgba(0,0,0,0.04)]">
+<a class="flex flex-col items-center justify-center text-primary border-t-2 border-primary pt-2 scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="text-label-caps font-label-caps mt-1">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-2 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+<span class="text-label-caps font-label-caps mt-1">Saved</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-2 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-label-caps font-label-caps mt-1">Profile</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for search bar focus
+        const searchInput = document.querySelector('input[type="text"]');
+        const searchContainer = searchInput.parentElement;
+        
+        searchInput.addEventListener('focus', () => {
+            searchContainer.classList.add('scale-[1.01]');
+        });
+        
+        searchInput.addEventListener('blur', () => {
+            searchContainer.classList.remove('scale-[1.01]');
+        });
+    </script>
+</body></html>
