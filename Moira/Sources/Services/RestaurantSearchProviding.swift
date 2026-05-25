@@ -93,8 +93,10 @@ private struct ProxyPlace: Decodable {
     let cuisine: String
     let address: String
     let city: String
+    let neighborhood: String?
     let latitude: Double?
     let longitude: Double?
+    let priceLevel: Int?
     let photoURL: String?
     let googleRating: Double?
     let googleReviewCount: Int
@@ -108,8 +110,10 @@ private struct ProxyPlace: Decodable {
             cuisine: cuisine,
             address: address,
             city: city,
+            neighborhood: neighborhood,
             latitude: latitude,
             longitude: longitude,
+            priceLevel: priceLevel,
             photoURL: photoURL,
             googleRating: googleRating,
             googleReviewCount: googleReviewCount,

@@ -197,9 +197,11 @@ struct AddRestaurantSheet: View {
         restaurant.address = customAddress
         restaurant.city = customCity
         restaurant.placeID = selectedCandidate?.id ?? restaurant.placeID
+        restaurant.neighborhood = selectedCandidate?.neighborhood ?? restaurant.neighborhood
         restaurant.latitude = selectedCandidate?.latitude ?? restaurant.latitude
         restaurant.longitude = selectedCandidate?.longitude ?? restaurant.longitude
         restaurant.photoURL = selectedCandidate?.photoURL ?? restaurant.photoURL
+        restaurant.priceLevel = selectedCandidate?.priceLevel ?? restaurant.priceLevel
         restaurant.googleRating = selectedCandidate?.googleRating ?? restaurant.googleRating
         restaurant.googleReviewCount = selectedCandidate?.googleReviewCount ?? restaurant.googleReviewCount
         restaurant.yelpRating = selectedCandidate?.yelpRating ?? restaurant.yelpRating

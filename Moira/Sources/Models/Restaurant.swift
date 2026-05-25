@@ -31,10 +31,12 @@ final class Restaurant {
     var cuisine: String
     var address: String
     var city: String
+    var neighborhood: String?
     var latitude: Double?
     var longitude: Double?
     var placeID: String?
     var photoURL: String?
+    var priceLevel: Int?
 
     var googleRating: Double?
     var googleReviewCount: Int
@@ -57,10 +59,12 @@ final class Restaurant {
         cuisine: String = "Uncategorized",
         address: String,
         city: String = "",
+        neighborhood: String? = nil,
         latitude: Double? = nil,
         longitude: Double? = nil,
         placeID: String? = nil,
         photoURL: String? = nil,
+        priceLevel: Int? = nil,
         googleRating: Double? = nil,
         googleReviewCount: Int = 0,
         yelpRating: Double? = nil,
@@ -77,10 +81,12 @@ final class Restaurant {
         self.cuisine = cuisine
         self.address = address
         self.city = city
+        self.neighborhood = neighborhood
         self.latitude = latitude
         self.longitude = longitude
         self.placeID = placeID
         self.photoURL = photoURL
+        self.priceLevel = priceLevel
         self.googleRating = googleRating
         self.googleReviewCount = googleReviewCount
         self.yelpRating = yelpRating
@@ -116,8 +122,22 @@ extension Restaurant {
     }
 
     var cityLine: String {
-        if city.isEmpty { return address }
-        return "\(address) • \(city)"
+        let region = neighborhood?.isEmpty == false ? neighborhood! : city
+        if region.isEmpty { return address }
+        return "\(address) • \(region)"
+    }
+
+    var locationCaption: String {
+        if let neighborhood, !neighborhood.isEmpty { return neighborhood }
+        if !city.isEmpty { return city }
+        return address
+    }
+
+    var priceLevelDisplay: String? {
+        guard let priceLevel else { return nil }
+        let clamped = max(0, min(priceLevel, 4))
+        if clamped == 0 { return "Free" }
+        return String(repeating: "$", count: clamped)
     }
 
     var hasAnySource: Bool {

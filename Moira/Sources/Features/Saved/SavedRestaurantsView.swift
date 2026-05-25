@@ -29,7 +29,7 @@ struct SavedRestaurantsView: View {
                             NavigationLink {
                                 RestaurantDetailView(restaurant: restaurant)
                             } label: {
-                                RestaurantRowView(restaurant: restaurant)
+                                RestaurantRowView(restaurant: restaurant, showSavedDate: true)
                             }
                             .buttonStyle(.plain)
                         }

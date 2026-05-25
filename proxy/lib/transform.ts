@@ -1,4 +1,4 @@
-import type { GooglePlace } from "./google";
+import type { GoogleAddressComponent, GooglePlace } from "./google";
 import type { ProxyPlace } from "./types";
 import type { YelpMatch } from "./yelp";
 
@@ -9,6 +9,33 @@ export function cityFromAddress(address?: string): string {
     return `${parts[parts.length - 2]}, ${parts[parts.length - 1]}`;
   }
   return address;
+}
+
+const NEIGHBORHOOD_TYPES = ["neighborhood", "sublocality_level_1", "sublocality"];
+
+export function neighborhoodFromComponents(components?: GoogleAddressComponent[]): string | null {
+  if (!components || components.length === 0) return null;
+  for (const type of NEIGHBORHOOD_TYPES) {
+    const match = components.find(component => component.types?.includes(type));
+    if (match?.longText) return match.longText;
+  }
+  return null;
+}
+
+const PRICE_LEVEL_MAP: Record<string, number> = {
+  PRICE_LEVEL_FREE: 0,
+  PRICE_LEVEL_INEXPENSIVE: 1,
+  PRICE_LEVEL_MODERATE: 2,
+  PRICE_LEVEL_EXPENSIVE: 3,
+  PRICE_LEVEL_VERY_EXPENSIVE: 4
+};
+
+export function normalizePriceLevel(value?: string | number | null): number | null {
+  if (value == null) return null;
+  if (typeof value === "number") {
+    return Number.isFinite(value) ? value : null;
+  }
+  return PRICE_LEVEL_MAP[value] ?? null;
 }
 
 export function toProxyPlace(place: GooglePlace, yelpMatch: YelpMatch | null, proxyOrigin: string): ProxyPlace {
@@ -23,8 +50,10 @@ export function toProxyPlace(place: GooglePlace, yelpMatch: YelpMatch | null, pr
     cuisine: place.primaryTypeDisplayName?.text ?? "Restaurant",
     address: place.formattedAddress ?? "",
     city: cityFromAddress(place.formattedAddress),
+    neighborhood: neighborhoodFromComponents(place.addressComponents),
     latitude: place.location?.latitude ?? null,
     longitude: place.location?.longitude ?? null,
+    priceLevel: normalizePriceLevel(place.priceLevel),
     photoURL,
     googleRating: place.rating ?? null,
     googleReviewCount: place.userRatingCount ?? 0,

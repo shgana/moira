@@ -26,6 +26,7 @@ struct RestaurantDetailView: View {
             VStack(alignment: .leading, spacing: 20) {
                 hero
                 scoreSection
+                listStatusSection
                 breakdownSection
                 calculationSection
                 notesSection
@@ -98,9 +99,19 @@ struct RestaurantDetailView: View {
         )
         .overlay(alignment: .bottomLeading) {
             VStack(alignment: .leading, spacing: 8) {
-                Text(restaurant.cuisine.uppercased())
-                    .font(.system(.caption, design: .monospaced, weight: .semibold))
-                    .foregroundStyle(.white.opacity(0.82))
+                HStack(spacing: 8) {
+                    Text(restaurant.cuisine.uppercased())
+                        .font(.system(.caption, design: .monospaced, weight: .semibold))
+                        .foregroundStyle(.white.opacity(0.82))
+                    if let priceLevelDisplay = restaurant.priceLevelDisplay {
+                        Text(priceLevelDisplay)
+                            .font(.system(.caption, design: .monospaced, weight: .semibold))
+                            .foregroundStyle(.white)
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 4)
+                            .background(.white.opacity(0.16), in: Capsule())
+                    }
+                }
                 Text(restaurant.name)
                     .font(.system(.largeTitle, design: .rounded, weight: .bold))
                     .foregroundStyle(.white)
@@ -125,6 +136,28 @@ struct RestaurantDetailView: View {
                     .foregroundStyle(MoiraTheme.secondaryText)
             }
             Spacer()
+        }
+        .moiraCard()
+    }
+
+    private var listStatusSection: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text("Save to")
+                .font(.system(.subheadline, design: .rounded, weight: .semibold))
+                .foregroundStyle(MoiraTheme.secondaryText)
+            Picker("List", selection: Binding(
+                get: { restaurant.listStatus },
+                set: { newValue in
+                    restaurant.listStatus = newValue
+                    restaurant.updatedAt = .now
+                    try? modelContext.save()
+                }
+            )) {
+                ForEach(ListStatus.allCases) { status in
+                    Text(status.rawValue).tag(status)
+                }
+            }
+            .pickerStyle(.segmented)
         }
         .moiraCard()
     }
@@ -168,12 +201,12 @@ struct RestaurantDetailView: View {
         VStack(alignment: .leading, spacing: 12) {
             Text("How we calculate this")
                 .font(.system(.title3, design: .rounded, weight: .semibold))
-            Text("Moira uses aggregate ratings only. Google and Yelp are normalized to a 0–10 scale, Beli is entered directly, and available weights renormalize when a source is missing.")
-            Text("Trust weights: Beli 0.50, Google 0.30, Yelp 0.20.")
+            Text("Moira blends the aggregate ratings Google and Yelp publish with the Beli score you entered. Google and Yelp are normalized to a 0–10 scale; Beli is used as-is.")
+            Text("Trust weights: Beli 0.50, Google 0.30, Yelp 0.20. If a source is missing, its weight is dropped and the remaining weights are renormalized.")
             if let score = scoreSnapshot.score {
                 Text("Current weighted result: \(String(format: "%.1f", score)) / 10.")
             }
-            Text("Confidence is based on available source count, review volume, and score agreement.")
+            Text("Confidence reflects how much data backs the score and how closely the sources agree. v1 does not do bot detection, recency bias, or NLP on review text.")
                 .foregroundStyle(MoiraTheme.secondaryText)
         }
         .font(.callout)
@@ -268,9 +301,27 @@ struct RestaurantDetailView: View {
     }
 
     private var reviewSummary: String {
-        let google = restaurant.googleReviewCount
-        let yelp = restaurant.yelpReviewCount
-        return "Google reviews: \(google) • Yelp reviews: \(yelp)"
+        var reviewParts: [String] = []
+        if restaurant.googleRating != nil {
+            reviewParts.append("\(restaurant.googleReviewCount) Google")
+        }
+        if restaurant.yelpRating != nil {
+            reviewParts.append("\(restaurant.yelpReviewCount) Yelp")
+        }
+
+        let reviewClause = reviewParts.isEmpty ? nil : "Based on " + reviewParts.joined(separator: " + ") + " reviews"
+        let beliClause = restaurant.beliScore != nil ? "your Beli rating" : nil
+
+        switch (reviewClause, beliClause) {
+        case let (.some(reviews), .some(beli)):
+            return "\(reviews), plus \(beli)."
+        case let (.some(reviews), .none):
+            return reviews + "."
+        case let (.none, .some(beli)):
+            return "Based on \(beli) only."
+        default:
+            return "No public ratings available yet."
+        }
     }
 
     private func openMaps(usingGoogle: Bool) {

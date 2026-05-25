@@ -4,9 +4,11 @@ const FIELD_MASK = [
   "places.id",
   "places.displayName",
   "places.formattedAddress",
+  "places.addressComponents",
   "places.location",
   "places.rating",
   "places.userRatingCount",
+  "places.priceLevel",
   "places.primaryTypeDisplayName",
   "places.photos"
 ].join(",");
@@ -15,9 +17,11 @@ const DETAILS_FIELD_MASK = [
   "id",
   "displayName",
   "formattedAddress",
+  "addressComponents",
   "location",
   "rating",
   "userRatingCount",
+  "priceLevel",
   "primaryTypeDisplayName",
   "photos"
 ].join(",");
@@ -30,13 +34,22 @@ function getGoogleAPIKey(): string {
   return value;
 }
 
+export type GoogleAddressComponent = {
+  longText?: string;
+  shortText?: string;
+  types?: string[];
+};
+
 export type GooglePlace = {
   id: string;
   displayName?: { text?: string };
   formattedAddress?: string;
+  addressComponents?: GoogleAddressComponent[];
   location?: { latitude?: number; longitude?: number };
   rating?: number;
   userRatingCount?: number;
+  // Google Places API (New) returns PRICE_LEVEL_INEXPENSIVE / MODERATE / EXPENSIVE / VERY_EXPENSIVE.
+  priceLevel?: string;
   primaryTypeDisplayName?: { text?: string };
   photos?: Array<{ name?: string }>;
 };

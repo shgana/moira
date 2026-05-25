@@ -65,10 +65,10 @@ enum ScoreEngine {
     }
 
     private static func computeConfidence(sourceCount: Int, reviewVolume: Int, spread: Double) -> ConfidenceLevel {
-        if sourceCount >= 3 && reviewVolume >= 400 && spread <= 1.6 {
+        if sourceCount >= 2 && reviewVolume >= 150 && spread <= 1.5 {
             return .high
         }
-        if sourceCount >= 2 && reviewVolume >= 120 && spread <= 2.6 {
+        if sourceCount >= 2 && (reviewVolume >= 50 || spread <= 2.5) {
             return .moderate
         }
         return .low

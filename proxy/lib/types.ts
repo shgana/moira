@@ -4,8 +4,10 @@ export type ProxyPlace = {
   cuisine: string;
   address: string;
   city: string;
+  neighborhood: string | null;
   latitude: number | null;
   longitude: number | null;
+  priceLevel: number | null;
   photoURL: string | null;
   googleRating: number | null;
   googleReviewCount: number;
