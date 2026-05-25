@@ -3,6 +3,9 @@
 
 proxy/node_modules/
 proxy/.vercel/
+proxy/.env
+
+build/
 
 DerivedData/
 xcuserdata/
